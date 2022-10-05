@@ -23,7 +23,7 @@ jobs:
       - run: npm ci
       - run: npm run lint
 
-  test:
+  tests:
     name: Node ${{ matrix.node }}
     runs-on: ubuntu-latest
 
