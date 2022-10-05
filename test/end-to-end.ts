@@ -1,6 +1,8 @@
 import fs from "fs"
 import path from "path"
 
+import cheerio from "cheerio"
+
 import { render } from "../src"
 
 describe("End-to-ends", () => {
@@ -13,17 +15,26 @@ describe("End-to-ends", () => {
   for (const fixture of fixtures) {
     it(`should cope with <${path.basename(fixture)}>`, () => {
       const html = fs.readFileSync(fixture, "utf-8")
-      console.log(html.length)
-
+      console.assert(html.length > 10_000)
+      // const x = cheerio.load(html)("body")
       const text = render(html)
-      console.log({ text })
+      expect(text.length).toBeGreaterThan(10_000)
 
-      //const css = fs.readFileSync(path.join(fixture, "css.css"), "utf-8");
-      //console.time(path.basename(fixture));
-      //const { finalCSS, sizeBefore, sizeAfter } = minimize({ html, css });
-      //console.timeEnd(path.basename(fixture));
-      //expect(sizeAfter < sizeBefore).toBeTruthy();
-      //expect(finalCSS).toBeTruthy();
+      const $body = cheerio.load(html)("body")
+      const text2 = render($body)
+      expect(text2.length).toBeGreaterThan(10_000)
     })
   }
+})
+
+describe("spot check some large fixtures", () => {
+  it(`should not lump certain words together`, () => {
+    const html = fs.readFileSync(
+      "test/fixtures/_en_actions_using-workflows_workflow-syntax-for-github-actions.html",
+      "utf-8"
+    )
+    const text = render(html)
+    expect(text).toMatch(/irectory of your repository.\nname/)
+    expect(text).toMatch(/github and inputs contexts.\nExample\nrun-name/)
+  })
 })
