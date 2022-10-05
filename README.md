@@ -1,4 +1,4 @@
-# cheerio-to-html
+# cheerio-to-text
 
 Explained by an example:
 
