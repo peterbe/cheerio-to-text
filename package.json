@@ -2,6 +2,13 @@
   "name": "cheerio-to-text",
   "version": "0.0.0",
   "description": "Turn a Cheerio object into plain text",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/peterbe/cheerio-to-text.git"
+  },
+  "bugs": {
+    "url": "https://github.com/peterbe/cheerio-to-text/issues"
+  },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "module": "lib/esm/index.js",
@@ -28,8 +35,7 @@
     "build:cjs": "tsc",
     "build:esm": "npm run build:cjs -- --module esnext --target es2019 --outDir lib/esm && echo '{\"type\":\"module\"}' > lib/esm/package.json",
     "prepare": "npm run build",
-    "file-to-text": "echo 'work harder'",
-    "html-to-text": "echo 'work harder also'"
+    "release": "npm run build:export && np"
   },
   "keywords": [
     "cheerio",
@@ -63,6 +69,7 @@
     "eslint-config-prettier": "8.5.0",
     "jest": "29.1.2",
     "jest-junit": "14.0.1",
+    "np": "7.6.2",
     "prettier": "2.7.1",
     "ts-jest": "29.0.3",
     "typescript": "4.8.4"
