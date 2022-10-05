@@ -1,0 +1,71 @@
+name: Node.js CI
+
+on:
+  push:
+    branches-ignore:
+      - "dependabot/**"
+  pull_request:
+  merge_group:
+
+env:
+  FORCE_COLOR: 2
+  NODE_COV: 17 # The Node.js version to run coverage tests on
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+
+  test:
+    name: Node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node:
+          - 16
+          - 18
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npm run build --if-present
+
+      - name: Run Jest
+        run: npm run test:jest
+        if: matrix.node != env.NODE_COV
+
+      - name: Run Jest with coverage
+        run: npm run test:jest -- --coverage
+        if: matrix.node == env.NODE_COV
+
+      - name: Upload Test coverage
+        if: always() && matrix.node == env.NODE_COV
+        uses: actions/upload-artifact@v3
+        with:
+          name: junit
+          path: |
+            junit.xml
+
+  event_file:
+    name: "Event File"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: Event File
+          path: ${{ github.event_path }}
