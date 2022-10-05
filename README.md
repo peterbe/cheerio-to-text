@@ -20,13 +20,13 @@ console.log(html)
 //
 
 const $ = cheerio.load(html)
-console.log($('div#main'))
+console.log($("div#main"))
 //
 //  Paragraph.
 //  FooBarHeading
 //
 
-console.log(render($('div#main')))
+console.log(render($("div#main")))
 //
 //  Paragraph.
 //  Foo
