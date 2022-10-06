@@ -72,4 +72,19 @@ describe("Unit tests", () => {
     const text = render(html)
     expect(text).toMatch(/Foo\nBar\./)
   })
+
+  it("should respect newlines inside pre blocks", () => {
+    const html = TEMPLATE.replace(
+      "BODY",
+      `
+        <pre>
+        one
+        two
+        three
+        </pre>
+        `
+    )
+    const text = render(html)
+    expect(text).toMatch(/one\n\s+two\n\s+three/)
+  })
 })
