@@ -1,0 +1,99 @@
+<div data-search="breadcrumbs">
+  <nav class="breadcrumbs">
+    <a href="#">GraphQL API</a>
+    <a href="#">Reference</a>
+    <a href="#">I am the page title</a>
+  </nav>
+</div>
+
+<h1>I am the page title</h1>
+
+<div data-search="lead">
+  <p>This is an introduction to the article.</p>
+</div>
+
+<div data-search="article-body">
+  <h1>Heading</h1>
+
+  <!-- This is HTML for graphql/reference/interfaces produced by renderPage() in archived branch `old-main`,
+       because today the GraphQL reference pages are generated on the client side -->
+  <div>
+    <div>
+      <h3 id="auditentry" class="pt-3">
+        <a href="#auditentry">AuditEntry</a>
+      </h3>
+    <p>An entry in the audit log.</p>
+    </div>
+    <div>
+    <h4>Implemented by</h4>
+    <ul>
+      <li><code><a href="/en/graphql/reference/objects#memberscandeletereposdisableauditentry">MembersCanDeleteReposDisableAuditEntry</a></code></li>
+    <li><code><a href="/en/graphql/reference/objects#memberscandeletereposenableauditentry">MembersCanDeleteReposEnableAuditEntry</a></code></li>
+     </ul>
+    <h4>Fields</h4>
+  <table class="fields width-full">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody><tr>
+  <td><p><code>action</code> (<code><a href="/en/graphql/reference/scalars#string">String!</a></code>)</p></td>
+  <td><p></p><p>The action name.</p><p></p>
+  </td>
+  </tr><tr>
+  <td><p><code>actor</code> (<code><a href="/en/graphql/reference/unions#auditentryactor">AuditEntryActor</a></code>)</p></td>
+  <td><p></p><p>The user who initiated the action.</p><p></p>
+  </td>
+  </tr><tr>
+  <td><p><code>actorIp</code> (<code><a href="/en/graphql/reference/scalars#string">String</a></code>)</p></td>
+  <td><p></p><p>The IP address of the actor.</p><p></p>
+  </td>
+  </tr><tr>
+  <td><p><code>actorLocation</code> (<code><a href="/en/graphql/reference/objects#actorlocation">ActorLocation</a></code>)</p></td>
+  <td><p></p><p>A readable representation of the actor&apos;s location.</p><p></p>
+  </td>
+  </tr><tr>
+  <td><p><code>actorLogin</code> (<code><a href="/en/graphql/reference/scalars#string">String</a></code>)</p></td>
+  <td><p></p><p>The username of the user who initiated the action.</p><p></p>
+  </td>
+  </tr><tr>
+  <td><p><code>actorResourcePath</code> (<code><a href="/en/graphql/reference/scalars#uri">URI</a></code>)</p></td>
+  <td><p></p><p>The HTTP path for the actor.</p><p></p>
+  </td>
+  </tr><tr>
+  <td><p><code>actorUrl</code> (<code><a href="/en/graphql/reference/scalars#uri">URI</a></code>)</p></td>
+  <td><p></p><p>The HTTP URL for the actor.</p><p></p>
+  </td>
+  </tr><tr>
+  <td><p><code>createdAt</code> (<code><a href="/en/graphql/reference/scalars#precisedatetime">PreciseDateTime!</a></code>)</p></td>
+  <td><p></p><p>The time the action was initiated.</p><p></p>
+  </td>
+  </tr><tr>
+  <td><p><code>operationType</code> (<code><a href="/en/graphql/reference/enums#operationtype">OperationType</a></code>)</p></td>
+  <td><p></p><p>The corresponding operation type for the action.</p><p></p>
+  </td>
+  </tr><tr>
+  <td><p><code>user</code> (<code><a href="/en/graphql/reference/objects#user">User</a></code>)</p></td>
+  <td><p></p><p>The user affected by the action.</p><p></p>
+  </td>
+  </tr><tr>
+  <td><p><code>userLogin</code> (<code><a href="/en/graphql/reference/scalars#string">String</a></code>)</p></td>
+  <td><p></p><p>For actions involving two users, the actor is the initiator and the user is the affected user.</p><p></p>
+  </td>
+  </tr><tr>
+  <td><p><code>userResourcePath</code> (<code><a href="/en/graphql/reference/scalars#uri">URI</a></code>)</p></td>
+  <td><p></p><p>The HTTP path for the user.</p><p></p>
+  </td>
+  </tr><tr>
+  <td><p><code>userUrl</code> (<code><a href="/en/graphql/reference/scalars#uri">URI</a></code>)</p></td>
+  <td><p></p><p>The HTTP URL for the user.</p><p></p>
+  </td>
+  </tr></tbody>
+  </table>
+    </div>
+    <hr>
+  </div>
+
+</div>
