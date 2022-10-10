@@ -15,6 +15,12 @@ describe("End-to-ends", () => {
       const html = fs.readFileSync(fixture, "utf-8")
       const text = render(html)
       expect(text.length).toBeGreaterThan(1_000)
+      if (path.basename(fixture) === "code-security-guides.html") {
+        // Highlight a few specific examples which have caused bugs before.
+        expect(text).toMatch(/Show 3 more guides/)
+        expect(text).not.toMatch(/Show 3more guides/)
+        expect(text).toMatch(/ities are reported\.\nStart learning path/)
+      }
     })
   }
 })

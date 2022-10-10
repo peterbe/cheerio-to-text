@@ -10,6 +10,7 @@ const inlineElements = new Set(
     .split(",")
     .map((s) => s.trim())
 )
+const isBlockTag = (tagName: string) => !inlineElements.has(tagName)
 
 export function render(
   node: CheerioAPI | Document | string | Element | Cheerio<Element>
@@ -30,26 +31,42 @@ export function render(
   }
 
   let text = ""
+
   function enter(element: AnyNode) {
     if (element.type === "text") {
-      if (element.data.trim()) text += element.data
-    } else if (element.type === "tag") {
-      if (!inlineElements.has(element.tagName)) {
-        if (text.at(-1) !== "\n") text += "\n"
+      text += element.data
+    }
+  }
+
+  function leave(element: AnyNode) {
+    if (element.type === "tag") {
+      // console.log({ LEAVING: element.type, tagName: element.tagName })
+      if (isBlockTag(element.tagName)) {
+        text += "\n"
       }
     }
   }
 
-  walk(root, enter)
+  walk(root, enter, leave)
 
-  return text.trim()
+  return text
+    .trim()
+    .split(/\n+/g)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .join("\n")
 }
 
-function walk(root: AnyNode, enter: (element: AnyNode) => void) {
+function walk(
+  root: AnyNode,
+  enter: (element: AnyNode) => void,
+  leave: (element: AnyNode) => void
+) {
   enter(root)
   if (root.type === "tag") {
     for (const child of root.children) {
-      walk(child, enter)
+      walk(child, enter, leave)
     }
   }
+  leave(root)
 }
