@@ -85,6 +85,40 @@ describe("Unit tests", () => {
         `
     )
     const text = render(html)
-    expect(text).toMatch(/one\n\s+two\n\s+three/)
+    expect(text).toMatch(/one\ntwo\nthree/)
+  })
+
+  it("should separate a h1 from a following span", () => {
+    const html = TEMPLATE.replace(
+      "BODY",
+      `
+        <h1>Heading</h1><span>Text</span>
+      `
+    )
+    const text = render(html)
+    expect(text).toMatch(/Heading\nText/)
+  })
+
+  it("should separate a h2 followed by two inlines", () => {
+    const html = TEMPLATE.replace(
+      "BODY",
+      `
+        <h2>Heading</h2><i>Italic</i><b>Strong</b>
+      `
+    )
+    const text = render(html)
+    expect(text).toMatch(/Heading\nItalicStrong/)
+  })
+
+  it("should work with the example code in the README", () => {
+    const html = TEMPLATE.replace(
+      "BODY",
+      `
+      <p>Para<strong>graph</strong>.</p>
+      <ul><li>Foo</li><li>Bar</li></ul><h3>Heading</h3>
+      `
+    )
+    const text = render(html)
+    expect(text).toBe("Paragraph.\nFoo\nBar\nHeading")
   })
 })
