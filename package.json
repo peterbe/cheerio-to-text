@@ -1,6 +1,6 @@
 {
   "name": "cheerio-to-text",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Turn a Cheerio object into plain text",
   "repository": {
     "type": "git",
