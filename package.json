@@ -60,13 +60,13 @@
     ]
   },
   "devDependencies": {
-    "@types/jest": "29.2.5",
+    "@types/jest": "29.4.0",
     "@types/node": "18.11.18",
     "@typescript-eslint/eslint-plugin": "5.48.0",
     "@typescript-eslint/parser": "5.48.0",
     "eslint": "8.31.0",
     "eslint-config-prettier": "8.6.0",
-    "jest": "29.3.1",
+    "jest": "29.4.1",
     "jest-junit": "15.0.0",
     "np": "7.6.3",
     "prettier": "2.8.3",
