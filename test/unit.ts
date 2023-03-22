@@ -121,4 +121,22 @@ describe("Unit tests", () => {
     const text = render(html)
     expect(text).toBe("Paragraph.\nFoo\nBar\nHeading")
   })
+
+  it("should respect whitespace between two inline tags", () => {
+    const html = TEMPLATE.replace(
+      "BODY",
+      `<div><code class="text-bold f5">accept</code> <span class="color-fg-muted pl-2 f5">string</span></div>`
+    )
+    const text = render(html)
+    expect(text).toBe("accept string")
+  })
+
+  it("should not add whitespace between two inline tags next to each other", () => {
+    const html = TEMPLATE.replace(
+      "BODY",
+      `<div><code class="text-bold f5">accept</code><span class="color-fg-muted pl-2 f5">string</span></div>`
+    )
+    const text = render(html)
+    expect(text).toBe("acceptstring")
+  })
 })
