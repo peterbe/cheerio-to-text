@@ -29,7 +29,7 @@ describe("spot check some large fixtures", () => {
   it("should not lump certain words together", () => {
     const html = fs.readFileSync(
       "test/fixtures/_en_actions_using-workflows_workflow-syntax-for-github-actions.html",
-      "utf-8"
+      "utf-8",
     )
     const text = render(html)
     expect(text).toMatch(/irectory of your repository.\nname/)

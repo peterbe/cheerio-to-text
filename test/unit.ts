@@ -16,7 +16,7 @@ describe("Unit tests", () => {
       "BODY",
       `
         <p>Para<b>gra</b><em>ph</em>.</p>
-        `
+        `,
     )
     const text = render(html)
     expect(text).toMatch(/Paragraph\./)
@@ -28,7 +28,7 @@ describe("Unit tests", () => {
       "BODY",
       `
         <p>Para<b>gra</b><em>ph</em>.</p>
-        `
+        `,
     )
     const $ = cheerio.load(html)
     const text = render($("body"))
@@ -40,7 +40,7 @@ describe("Unit tests", () => {
       "BODY",
       `
         <p>Para<b>gra</b><em>ph</em>.</p>
-        `
+        `,
     )
     const $ = cheerio.load(html)
     const text = render($("body")[0])
@@ -52,7 +52,7 @@ describe("Unit tests", () => {
       "BODY",
       `
         <p>Foo</p><p>Bar.</p>
-        `
+        `,
     )
     const text = render(html)
     expect(text).toMatch(/Foo\nBar\./)
@@ -67,7 +67,7 @@ describe("Unit tests", () => {
 
 
         <p>Bar.</p>
-        `
+        `,
     )
     const text = render(html)
     expect(text).toMatch(/Foo\nBar\./)
@@ -82,7 +82,7 @@ describe("Unit tests", () => {
         two
         three
         </pre>
-        `
+        `,
     )
     const text = render(html)
     expect(text).toMatch(/one\ntwo\nthree/)
@@ -93,7 +93,7 @@ describe("Unit tests", () => {
       "BODY",
       `
         <h1>Heading</h1><span>Text</span>
-      `
+      `,
     )
     const text = render(html)
     expect(text).toMatch(/Heading\nText/)
@@ -104,7 +104,7 @@ describe("Unit tests", () => {
       "BODY",
       `
         <h2>Heading</h2><i>Italic</i><b>Strong</b>
-      `
+      `,
     )
     const text = render(html)
     expect(text).toMatch(/Heading\nItalicStrong/)
@@ -116,7 +116,7 @@ describe("Unit tests", () => {
       `
       <p>Para<strong>graph</strong>.</p>
       <ul><li>Foo</li><li>Bar</li></ul><h3>Heading</h3>
-      `
+      `,
     )
     const text = render(html)
     expect(text).toBe("Paragraph.\nFoo\nBar\nHeading")
@@ -125,7 +125,7 @@ describe("Unit tests", () => {
   it("should respect whitespace between two inline tags", () => {
     const html = TEMPLATE.replace(
       "BODY",
-      `<div><code class="text-bold f5">accept</code> <span class="color-fg-muted pl-2 f5">string</span></div>`
+      `<div><code class="text-bold f5">accept</code> <span class="color-fg-muted pl-2 f5">string</span></div>`,
     )
     const text = render(html)
     expect(text).toBe("accept string")
@@ -134,7 +134,7 @@ describe("Unit tests", () => {
   it("should not add whitespace between two inline tags next to each other", () => {
     const html = TEMPLATE.replace(
       "BODY",
-      `<div><code class="text-bold f5">accept</code><span class="color-fg-muted pl-2 f5">string</span></div>`
+      `<div><code class="text-bold f5">accept</code><span class="color-fg-muted pl-2 f5">string</span></div>`,
     )
     const text = render(html)
     expect(text).toBe("acceptstring")

@@ -8,12 +8,12 @@ const inlineElements = new Set(
   select,slot,small,span,strong,sub,sup,svg,template,textarea,time,
   tt,u,var,video,wbr`
     .split(",")
-    .map((s) => s.trim())
+    .map((s) => s.trim()),
 )
 const isBlockTag = (tagName: string) => !inlineElements.has(tagName)
 
 export function render(
-  node: CheerioAPI | Document | string | Element | Cheerio<Element>
+  node: CheerioAPI | Document | string | Element | Cheerio<Element>,
 ): string {
   let root: Document | Element | null = null
   if (typeof node === "string") {
@@ -26,7 +26,7 @@ export function render(
 
   if (!root) {
     throw new Error(
-      "node was not a string, cheerio loaded document, or a cheerio node"
+      "node was not a string, cheerio loaded document, or a cheerio node",
     )
   }
 
@@ -60,7 +60,7 @@ export function render(
 function walk(
   root: AnyNode,
   enter: (element: AnyNode) => void,
-  leave: (element: AnyNode) => void
+  leave: (element: AnyNode) => void,
 ) {
   enter(root)
   if (root.type === "tag") {
