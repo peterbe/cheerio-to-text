@@ -78,5 +78,8 @@
   },
   "prettier": {
     "semi": false
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
