@@ -12,5 +12,4 @@ const HTML = `
 `.trim()
 
 const $ = cheerio.load(HTML)
-// console.assert(render($("#main")).includes("Paragraph."))
-console.assert(render($("#main")).includes(123))
+console.assert(render($("#main")).includes("Paragraph."))
