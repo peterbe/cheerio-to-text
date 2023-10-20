@@ -1,10 +1,10 @@
 {
-  "name": "sample-cjs-use",
+  "name": "sample-ts-use",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "tsc index.ts && node index.js"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +12,8 @@
   "dependencies": {
     "cheerio": "1.0.0-rc.12",
     "cheerio-to-text": "file:.."
+  },
+  "devDependencies": {
+    "typescript": "5.2.2"
   }
 }

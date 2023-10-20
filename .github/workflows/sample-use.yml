@@ -32,15 +32,9 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: DEBUG
-        working-directory: ${{ matrix.dir }}
-        run: |
-          ls -l ../lib
-
-
       - name: Install
         working-directory: ${{ matrix.dir }}
         run: npm install
       - name: Run
         working-directory: ${{ matrix.dir }}
-        run: node index.js
+        run: npm run test
