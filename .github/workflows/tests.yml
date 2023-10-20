@@ -16,12 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - uses: oven-sh/setup-bun@a1800f471a0bc25cddac36bb13e6f436ddf341d7 # v1
         with:
-          node-version: 20
-          cache: npm
-      - run: npm ci
-      - run: npm run lint
+          bun-version: 1.0.3
+      - run: bun install
+      - run: bun run lint
 
   tests:
     name: Node ${{ matrix.node }}
