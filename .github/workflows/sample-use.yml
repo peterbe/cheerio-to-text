@@ -31,7 +31,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
-          cache: npm
+          # can't use `cache:npm` here because no package-lock.json yet
+
       - name: Install
         working-directory: ${{ matrix.dir }}
         run: npm install
