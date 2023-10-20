@@ -1,0 +1,39 @@
+name: Sample use
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  merge_group:
+
+jobs:
+  use:
+    name: Use in ${{ matrix.dir }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        dir:
+          - "sample-cjs-use"
+          - "sample-esm-use"
+          - "sample-ts-use"
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install for self
+        run: npm ci
+      - name: Build
+        run: npm run build
+
+      - name: Install
+        working-directory: ${{ matrix.dir }}
+        run: npm install
+      - name: Run
+        working-directory: ${{ matrix.dir }}
+        run: npm run test

@@ -2,8 +2,8 @@ name: Node.js CI
 
 on:
   push:
-    branches-ignore:
-      - "dependabot/**"
+    branches:
+      - main
   pull_request:
   merge_group:
 
