@@ -25,6 +25,17 @@ jobs:
         with:
           node-version: 20
           cache: npm
+      - name: Install for self
+        run: npm ci
+      - name: Build
+        run: npm run build
+
+      - name: DEBUG
+        working-directory: ${{ matrix.dir }}
+        run: |
+          ls -l ../lib
+
+
       - name: Install
         working-directory: ${{ matrix.dir }}
         run: npm install
