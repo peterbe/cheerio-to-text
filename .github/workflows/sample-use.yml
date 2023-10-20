@@ -15,9 +15,9 @@ jobs:
       fail-fast: false
       matrix:
         dir:
-          - 'sample-cjs-use'
-          - 'sample-esm-use'
-          - 'sample-ts-use'
+          - "sample-cjs-use"
+          - "sample-esm-use"
+          - "sample-ts-use"
 
     steps:
       - uses: actions/checkout@v4
