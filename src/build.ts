@@ -10,22 +10,26 @@ await Bun.build({
   format: "esm",
 })
 
-// await Bun.build({
-//   entrypoints: ["./src/index.ts"],
-//   outdir: DIST_DIR,
-//   target: "node",
-//   format: "cjs",
-// })
+await Bun.build({
+  entrypoints: ["./src/index.ts"],
+  outdir: DIST_DIR,
+  target: "node",
+  format: "cjs", // XXX NOT SUPPORTED YET
+})
 
-await retroFix()
+// await retroFix()
 
 async function retroFix() {
   // Got this from
   // https://github.com/oven-sh/bun/issues/5707#issuecomment-1730511178
-  const IMPORT_META_REQUIRE_POLYFILL = `import { createRequire as createImportMetaRequire } from "module"; import.meta.require ||= (id) => createImportMetaRequire(import.meta.url)(id);`
+  // const IMPORT_META_REQUIRE_POLYFILL = `import { createRequire as createImportMetaRequire } from "module"; import.meta.require ||= (id) => createImportMetaRequire(import.meta.url)(id);`
   // renameSync("lib/index.js", "lib/esm/index.js")
+
   const CJS_FILE = join(DIST_DIR, "index.js")
   copyFileSync(join(DIST_DIR, "esm", "index.js"), CJS_FILE)
+
+  // const cjsFile = Bun.file(CJS_FILE)
+  // const cjsFileContent = await cjsFile.text()
 
   // const outputFile = Bun.file(CJS_FILE)
   // const output = await outputFile.text()
