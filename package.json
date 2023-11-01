@@ -21,7 +21,7 @@
   },
   "scripts": {
     "test": "npm run test:test && npm run lint",
-    "test:test": "node --loader tsx --test test/*.ts",
+    "test:test": "node --import tsx --test test/*.ts",
     "lint": "npm run lint:es && npm run lint:prettier",
     "lint:es": "eslint src",
     "lint:prettier": "npm run prettier -- --check",
