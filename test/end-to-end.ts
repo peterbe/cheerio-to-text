@@ -1,3 +1,5 @@
+import assert from "node:assert"
+import { describe, it } from "node:test"
 import fs from "fs"
 import path from "path"
 
@@ -14,12 +16,12 @@ describe("End-to-ends", () => {
     it(`should cope with <${path.basename(fixture)}>`, () => {
       const html = fs.readFileSync(fixture, "utf-8")
       const text = render(html)
-      expect(text.length).toBeGreaterThan(1_000)
+      assert(text.length > 1_000)
       if (path.basename(fixture) === "code-security-guides.html") {
         // Highlight a few specific examples which have caused bugs before.
-        expect(text).toMatch(/Show 3 more guides/)
-        expect(text).not.toMatch(/Show 3more guides/)
-        expect(text).toMatch(/ities are reported\.\nStart learning path/)
+        assert(/Show 3 more guides/.test(text))
+        assert(!/Show 3more guides/.test(text))
+        assert(/ities are reported\.\nStart learning path/.test(text))
       }
     })
   }
@@ -32,7 +34,7 @@ describe("spot check some large fixtures", () => {
       "utf-8",
     )
     const text = render(html)
-    expect(text).toMatch(/irectory of your repository.\nname/)
-    expect(text).toMatch(/github and inputs contexts.\nExample\nrun-name/)
+    assert(/irectory of your repository.\nname/.test(text))
+    assert(/github and inputs contexts.\nExample\nrun-name/.test(text))
   })
 })
