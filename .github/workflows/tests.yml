@@ -43,5 +43,10 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
 
-      - name: Run Jest
+      - name: Run Jest (Node 18)
+        if: matrix.node == 18
+        run: node --loader tsx --test test/*.ts
+
+      - name: Run Jest (${{ matrix.node }})
+        if: matrix.node != 18
         run: npm run test:test
