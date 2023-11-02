@@ -9,7 +9,6 @@ on:
 
 env:
   FORCE_COLOR: 2
-  NODE_COV: 18 # The Node.js version to run coverage tests on
 
 jobs:
   lint:
@@ -44,28 +43,10 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
 
-      - name: Run Jest
-        run: npm run test:jest
-        if: matrix.node != env.NODE_COV
+      - name: Run tests (Node 18)
+        if: matrix.node == 18
+        run: node --loader tsx --test test/*.ts
 
-      - name: Run Jest with coverage
-        run: npm run test:jest -- --coverage
-        if: matrix.node == env.NODE_COV
-
-      - name: Upload Test coverage
-        if: always() && matrix.node == env.NODE_COV
-        uses: actions/upload-artifact@v3
-        with:
-          name: junit
-          path: |
-            junit.xml
-
-  event_file:
-    name: "Event File"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Upload
-        uses: actions/upload-artifact@v3
-        with:
-          name: Event File
-          path: ${{ github.event_path }}
+      - name: Run tests (${{ matrix.node }})
+        if: matrix.node != 18
+        run: npm run test:test

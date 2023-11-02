@@ -1,3 +1,6 @@
+import assert from "node:assert"
+import { describe, it } from "node:test"
+
 import cheerio from "cheerio"
 
 import { render } from "../src"
@@ -19,8 +22,8 @@ describe("Unit tests", () => {
         `,
     )
     const text = render(html)
-    expect(text).toMatch(/Paragraph\./)
-    expect(text).toBe(text.trim())
+    assert(/Paragraph\./.test(text))
+    assert(text === text.trim())
   })
 
   it("should be possible to send in a cheerio object", () => {
@@ -32,7 +35,7 @@ describe("Unit tests", () => {
     )
     const $ = cheerio.load(html)
     const text = render($("body"))
-    expect(text).toMatch(/Paragraph\./)
+    assert(/Paragraph\./.test(text))
   })
 
   it("should be possible to send in a cheerio element", () => {
@@ -44,7 +47,7 @@ describe("Unit tests", () => {
     )
     const $ = cheerio.load(html)
     const text = render($("body")[0])
-    expect(text).toMatch(/Paragraph\./)
+    assert(/Paragraph\./.test(text))
   })
 
   it("should keep block elements apart", () => {
@@ -55,7 +58,7 @@ describe("Unit tests", () => {
         `,
     )
     const text = render(html)
-    expect(text).toMatch(/Foo\nBar\./)
+    assert(/Foo\nBar\./.test(text))
   })
 
   it("should keep block elements apart even if they're already apart", () => {
@@ -70,7 +73,7 @@ describe("Unit tests", () => {
         `,
     )
     const text = render(html)
-    expect(text).toMatch(/Foo\nBar\./)
+    assert(/Foo\nBar\./.test(text))
   })
 
   it("should respect newlines inside pre blocks", () => {
@@ -85,7 +88,7 @@ describe("Unit tests", () => {
         `,
     )
     const text = render(html)
-    expect(text).toMatch(/one\ntwo\nthree/)
+    assert(/one\ntwo\nthree/.test(text))
   })
 
   it("should separate a h1 from a following span", () => {
@@ -96,7 +99,7 @@ describe("Unit tests", () => {
       `,
     )
     const text = render(html)
-    expect(text).toMatch(/Heading\nText/)
+    assert(/Heading\nText/.test(text))
   })
 
   it("should separate a h2 followed by two inlines", () => {
@@ -107,7 +110,7 @@ describe("Unit tests", () => {
       `,
     )
     const text = render(html)
-    expect(text).toMatch(/Heading\nItalicStrong/)
+    assert(/Heading\nItalicStrong/.test(text))
   })
 
   it("should work with the example code in the README", () => {
@@ -119,7 +122,7 @@ describe("Unit tests", () => {
       `,
     )
     const text = render(html)
-    expect(text).toBe("Paragraph.\nFoo\nBar\nHeading")
+    assert(text === "Paragraph.\nFoo\nBar\nHeading")
   })
 
   it("should respect whitespace between two inline tags", () => {
@@ -128,7 +131,7 @@ describe("Unit tests", () => {
       `<div><code class="text-bold f5">accept</code> <span class="color-fg-muted pl-2 f5">string</span></div>`,
     )
     const text = render(html)
-    expect(text).toBe("accept string")
+    assert(text === "accept string")
   })
 
   it("should not add whitespace between two inline tags next to each other", () => {
@@ -137,6 +140,6 @@ describe("Unit tests", () => {
       `<div><code class="text-bold f5">accept</code><span class="color-fg-muted pl-2 f5">string</span></div>`,
     )
     const text = render(html)
-    expect(text).toBe("acceptstring")
+    assert(text === "acceptstring")
   })
 })

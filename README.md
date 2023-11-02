@@ -54,11 +54,11 @@ Run `npm run build:watch` in one terminal the look at
 ## How to run tests
 
 ```sh
-jest
+npm run test:test
 ```
 
 Or
 
 ```sh
-jest --watch -t "some test text"
+npm run test:test -- --watch
 ```
