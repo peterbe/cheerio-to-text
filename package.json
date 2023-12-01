@@ -51,7 +51,7 @@
     "eslint-config-prettier": "9.0.0",
     "np": "8.0.4",
     "prettier": "3.0.3",
-    "tsx": "3.14.0",
+    "tsx": "4.6.1",
     "typescript": "5.2.2"
   },
   "peerDependencies": {
