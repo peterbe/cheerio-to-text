@@ -49,7 +49,7 @@
     "@typescript-eslint/parser": "6.9.1",
     "eslint": "8.52.0",
     "eslint-config-prettier": "9.0.0",
-    "np": "8.0.4",
+    "np": "9.0.0",
     "prettier": "3.0.3",
     "tsx": "3.14.0",
     "typescript": "5.2.2"
