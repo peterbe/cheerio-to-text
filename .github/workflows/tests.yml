@@ -43,11 +43,5 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
 
-      - name: Run tests (Node 18)
-        if: matrix.node == 18
-        # run: node --loader tsx --test test/*.ts
-        run: npm run test:test
-
       - name: Run tests (${{ matrix.node }})
-        if: matrix.node != 18
         run: npm run test:test
