@@ -45,7 +45,8 @@ jobs:
 
       - name: Run tests (Node 18)
         if: matrix.node == 18
-        run: node --loader tsx --test test/*.ts
+        # run: node --loader tsx --test test/*.ts
+        run: npm run test:test
 
       - name: Run tests (${{ matrix.node }})
         if: matrix.node != 18
