@@ -52,7 +52,7 @@
     "np": "10.0.6",
     "prettier": "3.3.2",
     "tsx": "4.16.2",
-    "typescript": "5.5.3"
+    "typescript": "5.5.4"
   },
   "peerDependencies": {
     "cheerio": "1.0.0-rc.12"
