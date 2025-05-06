@@ -9,3 +9,6 @@ format:
 
 lint:
     npm run lint
+
+upgrade:
+     npx npm-check-updates --interactive
