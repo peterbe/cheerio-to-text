@@ -11,4 +11,7 @@ lint:
     npm run lint
 
 upgrade:
-     npx npm-check-updates --interactive
+    npx npm-check-updates --interactive
+
+outdated:
+    npm outdated
