@@ -45,14 +45,14 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "22.15.14",
-    "@typescript-eslint/eslint-plugin": "8.32.0",
-    "@typescript-eslint/parser": "8.32.0",
-    "eslint": "9.26.0",
-    "eslint-config-prettier": "10.1.2",
+    "@typescript-eslint/eslint-plugin": "8.49.0",
+    "@typescript-eslint/parser": "8.49.0",
+    "eslint": "9.39.1",
+    "eslint-config-prettier": "10.1.8",
     "np": "10.2.0",
-    "prettier": "3.5.3",
+    "prettier": "3.7.4",
     "tsx": "4.19.4",
-    "typescript": "5.8.3"
+    "typescript": "5.9.3"
   },
   "peerDependencies": {
     "cheerio": "1.0.0-rc.12"
