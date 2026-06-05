@@ -44,12 +44,12 @@
   "author": "Peter Bengtsson",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "24.10.1",
-    "@typescript-eslint/eslint-plugin": "8.49.0",
-    "@typescript-eslint/parser": "8.49.0",
+    "@types/node": "25.9.1",
+    "@typescript-eslint/eslint-plugin": "8.60.1",
+    "@typescript-eslint/parser": "8.60.1",
     "eslint": "9.39.1",
     "eslint-config-prettier": "10.1.8",
-    "np": "10.2.0",
+    "np": "11.2.1",
     "prettier": "3.8.3",
     "tsx": "4.21.0",
     "typescript": "5.9.3"
