@@ -15,3 +15,6 @@ upgrade:
 
 outdated:
     npm outdated
+
+release:
+    npm run release
