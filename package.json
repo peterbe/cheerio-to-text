@@ -44,7 +44,7 @@
   "author": "Peter Bengtsson",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "25.9.1",
+    "@types/node": "26.1.0",
     "@typescript-eslint/eslint-plugin": "8.60.1",
     "@typescript-eslint/parser": "8.60.1",
     "eslint": "9.39.1",
