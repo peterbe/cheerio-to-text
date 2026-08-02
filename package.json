@@ -22,13 +22,8 @@
   "scripts": {
     "test": "npm run test:test && npm run lint",
     "test:test": "node --import tsx --test test/*.ts",
-    "lint": "npm run lint:es && npm run lint:prettier",
-    "lint:es": "eslint src",
-    "lint:prettier": "npm run prettier -- --check",
-    "format": "npm run format:es && npm run format:prettier",
-    "format:es": "npm run lint:es -- --fix",
-    "format:prettier": "npm run prettier -- --write",
-    "prettier": "prettier '**/*.{ts,md,json,yml,mjs}'",
+    "lint": "biome check .",
+    "format": "biome check --write .",
     "build:watch": "tsc --watch",
     "build": "npm run build:cjs && npm run build:esm",
     "build:cjs": "tsc",
@@ -44,21 +39,14 @@
   "author": "Peter Bengtsson",
   "license": "MIT",
   "devDependencies": {
+    "@biomejs/biome": "^2.5.6",
     "@types/node": "26.1.2",
-    "@typescript-eslint/eslint-plugin": "8.62.1",
-    "@typescript-eslint/parser": "8.62.1",
-    "eslint": "9.39.1",
-    "eslint-config-prettier": "10.1.8",
     "np": "11.2.2",
-    "prettier": "3.9.6",
     "tsx": "4.23.1",
     "typescript": "5.9.3"
   },
   "peerDependencies": {
     "cheerio": "1.0.0-rc.12"
-  },
-  "prettier": {
-    "semi": false
   },
   "engines": {
     "node": ">=18"
