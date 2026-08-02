@@ -1,4 +1,4 @@
-import type { Element, CheerioAPI, Document, AnyNode, Cheerio } from "cheerio"
+import type { AnyNode, Cheerio, CheerioAPI, Document, Element } from "cheerio"
 import cheerio from "cheerio"
 
 const inlineElements = new Set(
